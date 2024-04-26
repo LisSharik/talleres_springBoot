@@ -1,0 +1,173 @@
+{
+	"info": {
+		"_postman_id": "52854475-9f99-4763-989b-e5dc777b719d",
+		"name": "Events_register",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23197420"
+	},
+	"item": [
+		{
+			"name": "getAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/allevents",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"allevents"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/{{id_event}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"{{id_event}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllPage",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/?page=2&size=2",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						},
+						{
+							"key": "size",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insert",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Festival\",\r\n    \"date\": \"2025-12-12\",\r\n    \"ubication\": \"Bogota\",\r\n    \"capacity\": 500\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}",
+					"host": [
+						"{{URL}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Festival\",\r\n    \"date\": \"2022-12-24\",\r\n    \"ubication\": \"Bucaramanga\",\r\n    \"capacity\": 10\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/{{id_event}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"{{id_event}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/{{id_event}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"{{id_event}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"var respose = pm.response.json();\r",
+					"pm.collectionVariables.set(\"id_event\", respose.id)\r",
+					"\r",
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "http://localhost:8080/api/events",
+			"type": "string"
+		},
+		{
+			"key": "id_event",
+			"value": ""
+		}
+	]
+}
